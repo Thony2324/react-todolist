@@ -1,35 +1,30 @@
 import React from "react";
+import Filter from "./Filter";
+import AddTodo from "./AddTodo";
+import ListTodos from "./ListTodos";
 
 class App extends React.Component {
   state = {
+    filter: "all", // done, notdone
     todos: [
-      { title: "Learn to code", done: true },
-      { title: "Rule the world", done: false }
+      { title: "Learn CSS", done: true },
+      { title: "Learn Javascript", done: true },
+      { title: "Learn React", done: false },
+      { title: "Learn Redux", done: false }
     ]
   };
 
-  showAllTodos = () => {
-    const filterTodos = this.state.todos.filter();
+  addTodo = title => {
+    const newTodo = {
+      title: title,
+      done: false
+    };
     this.setState({
-      todos: filterTodos
+      todos: [...this.state.todos, newTodo]
     });
   };
 
-  showTodosDone = () => {
-    const filterTodos = this.state.todos.filter(todo => todo.done);
-    this.setState({
-      todos: filterTodos
-    });
-  };
-
-  showTodosNotDone = () => {
-    const filterTodos = this.state.todos.filter(todo => !todo.done);
-    this.setState({
-      todos: filterTodos
-    });
-  };
-
-  handleChange = index => {
+  deleteTodo = index => {
     const newTodos = [
       ...this.state.todos.slice(0, index),
       ...this.state.todos.slice(index + 1)
@@ -37,7 +32,7 @@ class App extends React.Component {
     this.setState({ todos: newTodos });
   };
 
-  handleChangeCheckbox = index => {
+  markAsDone = index => {
     // create a copy of a todo (this.state.todos[index] get the todo at the index)
     // update du param 'done' which update the todo at the same index
     const todoCopy = {
@@ -52,17 +47,10 @@ class App extends React.Component {
     this.setState({ todos: todosCopy });
   };
 
-  handleSubmit = e => {
-    e.preventDefault();
-    const newTodos = [
-      ...this.state.todos,
-      { title: e.target[0].value, done: false }
-    ];
+  filterTodos = filter => {
     this.setState({
-      todos: newTodos
+      filter: filter
     });
-    // reset form
-    document.getElementById("fm-add-todo").reset();
   };
 
   render() {
@@ -70,57 +58,15 @@ class App extends React.Component {
       <div className="App">
         <div className="jumbotron">
           <h1 className="display-6">Todo List</h1>
-          <div className="btn-group" role="group">
-            <button className="btn btn-info btn-sm" onClick={this.showAllTodos}>
-              All
-            </button>
-            <button
-              className="btn btn-info btn-sm"
-              onClick={this.showTodosDone}
-            >
-              Done
-            </button>
-            <button
-              className="btn btn-info btn-sm"
-              onClick={this.showTodosNotDone}
-            >
-              Not done
-            </button>
-          </div>
-          <br />
-          <br />
-          <ul className="list-group">
-            {this.state.todos.map((todo, index) => {
-              return (
-                <li className="list-group-item" key={index}>
-                  <input
-                    type="checkbox"
-                    checked={todo.done ? "checked" : ""}
-                    className="form-check-input"
-                    onChange={() => this.handleChangeCheckbox(index)}
-                  />
-                  <span className={todo.done ? "done" : ""}>{todo.title}</span>
-                  <button
-                    type="button"
-                    className="btn btn-danger btn-sm float-right"
-                    onClick={() => this.handleChange(index)}
-                  >
-                    Delete
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
+          <Filter filterTodos={this.filterTodos} />
+          <ListTodos
+            todos={this.state.todos}
+            filter={this.state.filter}
+            deleteTodo={this.deleteTodo}
+            markAsDone={this.markAsDone}
+          />
           <hr className="my-4" />
-          <form id="fm-add-todo" onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="lblTodo">Add a todo : </label>
-              <input type="text" className="form-control" placeholder="Title" />
-            </div>
-            <button type="submit" className="btn btn-primary btn-sm">
-              Add
-            </button>
-          </form>
+          <AddTodo addTodo={this.addTodo} />
         </div>
       </div>
     );
