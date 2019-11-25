@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-scripts": "3.2.0"
@@ -32,5 +33,10 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "index.js",
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "react-test-render": "^1.1.2"
+  }
 }

@@ -1,13 +1,14 @@
 import React from "react";
+import classNames from "classnames";
 
 const Button = ({ type, label, position, color, handleClick }) => {
-  const classPosition = position === "right" ? "float-right" : "";
+  const btnClasses = classNames("btn btn-sm", {
+    "float-right": position === "right",
+    [`btn-${color}`]: true
+  });
+
   return (
-    <button
-      type={type}
-      className={`btn btn-sm btn-${color} ${classPosition}`}
-      onClick={handleClick}
-    >
+    <button type={type} className={btnClasses} onClick={handleClick}>
       {label}
     </button>
   );
