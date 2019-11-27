@@ -14,6 +14,11 @@ class App extends React.Component {
     ]
   };
 
+  // componentDidMount() {
+  //   axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+  //     .then(res => this.setState({ todos: res.data }));
+  // }
+
   addTodo = title => {
     const newTodo = {
       title: title,
@@ -22,6 +27,14 @@ class App extends React.Component {
     this.setState({
       todos: [...this.state.todos, newTodo]
     });
+
+    // axios.post('https://jsonplaceholder.typicode.com/todos', {
+    //   title: title,
+    //   completed: false
+    // })
+    //   .then(res => this.setState({
+    //     todos: [...this.state.todos, res.data]
+    //   }));
   };
 
   deleteTodo = index => {
