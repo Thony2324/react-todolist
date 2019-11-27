@@ -1,5 +1,5 @@
 import React from "react";
-import { create } from "react-test-renderer";
+//import { create } from "react-test-renderer";
 import { shallow } from "enzyme";
 import Button from "../components/Button";
 
@@ -47,12 +47,12 @@ describe("<Button />", () => {
       expect(wrapper.text()).toEqual("Add");
     });
 
-    it("matches the snapshot", () => {
-      const button = create(
-        <Button type="submit" label="Add" color="primary" />
-      );
-      expect(button.toJSON()).toMatchSnapshot();
-    });
+    // it("matches the snapshot", () => {
+    //   const button = create(
+    //     <Button type="submit" label="Add" color="primary" />
+    //   );
+    //   expect(button.toJSON()).toMatchSnapshot();
+    // });
   });
 
   describe("Interactions", () => {

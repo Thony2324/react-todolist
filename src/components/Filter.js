@@ -7,6 +7,7 @@ const Filter = ({ filterTodos }) => {
       <Button
         type=""
         label="All"
+        data-test-id="button-all"
         position=""
         color="info"
         handleClick={() => filterTodos("all")}
@@ -14,6 +15,7 @@ const Filter = ({ filterTodos }) => {
       <Button
         type=""
         label="Done"
+        data-test-id="button-done"
         position=""
         color="info"
         handleClick={() => filterTodos("done")}
@@ -21,6 +23,7 @@ const Filter = ({ filterTodos }) => {
       <Button
         type=""
         label="Not done"
+        data-test-id="button-notdone"
         position=""
         color="info"
         handleClick={() => filterTodos("notdone")}
