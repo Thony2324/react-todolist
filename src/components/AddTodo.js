@@ -9,15 +9,11 @@ class AddTodo extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.addTodo(this.state.title);
-    this.setState({
-      title: ""
-    });
+    this.setState({ title: "" });
   };
 
   handleChange = e => {
-    this.setState({
-      title: e.target.value
-    });
+    this.setState({ title: e.target.value });
   };
 
   render() {
