@@ -8,7 +8,7 @@ describe("<Button />", () => {
     return shallow(<Button {...customProps} />);
   }
 
-  describe("rendering", () => {
+  describe("Rendering", () => {
     it("should render correctly", () => {
       const wrapper = makeRender();
       expect(wrapper).toHaveLength(1);
@@ -55,7 +55,7 @@ describe("<Button />", () => {
     });
   });
 
-  describe("interactions", () => {
+  describe("Interactions", () => {
     it("should call mock function twice on button click", () => {
       const mockFnClick = jest.fn();
       const wrapper = makeRender({ handleClick: mockFnClick });

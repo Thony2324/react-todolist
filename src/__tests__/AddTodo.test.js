@@ -7,7 +7,7 @@ describe("<AddTodo />", () => {
     return shallow(<AddTodo {...customProps} />);
   }
 
-  describe("rendering", () => {
+  describe("Rendering", () => {
     it("should render correctly", () => {
       const wrapper = makeRender();
       expect(wrapper.exists()).toBe(true);
@@ -19,7 +19,7 @@ describe("<AddTodo />", () => {
     });
   });
 
-  describe("interactions", () => {
+  describe("Interactions", () => {
     it("should change the state on input change", () => {
       const wrapper = makeRender();
       const input = wrapper.find("input").at(0);

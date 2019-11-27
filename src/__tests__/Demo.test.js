@@ -1,7 +1,12 @@
 // describe permet de regrouper les tests dans des scénarios
-// describe("<App /> rendering", () => {});
-// describe("<App /> interactions", () => {});
-// describe("<App /> lifecycle method invocations", () => {});
+// describe("<App />", () => {
+// function makeRender(customProps) {
+//   return shallow(<App {...customProps} />);
+// }
+//   describe("Rendering", () => {});
+//   describe("Interactions", () => {});
+//   describe("Lifecycle", () => {});
+// });
 
 // beforeEach(() => { someInitializationFunction(); });
 // afterEach(() => { someClearFunction(); });
